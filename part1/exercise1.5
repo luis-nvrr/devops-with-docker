@@ -1,0 +1,18 @@
+    ~  docker run -d --rm --name secret-message devopsdockeruh/simple-web-service:alpine              
+7c09aeccc98fce68b50e7f7f6a55dfcaff8d786e9fdd145cce78ba7a9b6d899b
+
+    ~  docker exec -it secret-message sh                                                              
+/usr/src/app # tail -f ./text.log
+2022-02-13 16:38:55 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+2022-02-13 16:38:57 +0000 UTC
+2022-02-13 16:38:59 +0000 UTC
+2022-02-13 16:39:01 +0000 UTC
+2022-02-13 16:39:03 +0000 UTC
+2022-02-13 16:39:05 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+
+    ~  docker images                                                                                  
+REPOSITORY                          TAG       IMAGE ID       CREATED         SIZE
+devopsdockeruh/simple-web-service   ubuntu    4e3362e907d5   11 months ago   83MB
+devopsdockeruh/simple-web-service   alpine    fd312adc88e0   11 months ago   15.7MB

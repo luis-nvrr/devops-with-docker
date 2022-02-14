@@ -1,0 +1,2 @@
+docker run build -t backend-example .
+docker run -d --rm -p 8080:8080 backend-example

@@ -1,0 +1,5 @@
+    ~  docker run --rm -it --name missing-dependencies ubuntu sh -c 'echo "Input website:"; read website; echo "Sear
+ching.."; sleep 1; curl http://$website;'
+
+    ~  docker run --rm -it --name missing-dependencies ubuntu sh -c 'apt-get update; apt-get install curl -y;echo "I
+nput website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
