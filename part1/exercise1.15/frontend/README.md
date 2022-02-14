@@ -1,6 +1,9 @@
 # Adviency challenge
 This app is a gift list to keep track of things asked to Santa!
 
+## Requires
+- Node 16.x
+
 ## Installation
 Clone the project and run:
 ```bash
