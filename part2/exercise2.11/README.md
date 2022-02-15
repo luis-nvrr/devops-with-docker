@@ -15,10 +15,10 @@ The docker-compose.dev.yml specifies 4 services:
 
 ### App
 
-App specifies 2 volumes: one maps the entire frontend folder to be able to modify and see the changes. The node_modules volume allows to persist the nodule_modules folder from the container, so that it is not overwritten by an empty node_modules in the blogs-frontend folder.
+App specifies 2 volumes: the first one maps the entire frontend folder to be able to modify and see the changes. The node_modules volume allows to persist the node_modules folder from the container, so that it is not overwritten by an empty node_modules in the ./blogs-frontend folder.
 
 ### Server
-w
+
 Server, similarly to App, also specifies 2 volumes.
 
 ### Mongo
