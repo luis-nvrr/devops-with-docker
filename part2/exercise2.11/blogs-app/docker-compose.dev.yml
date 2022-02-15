@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  app:
+    image: blogs-frontend-dev
+    build:
+      context: ./blogs-frontend/
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./blogs-frontend:/home/node
+      - node_modules_frontend:/home/node/node_modules
+    container_name: blogs-frontend-dev
+    environment:
+      REACT_APP_BACKEND_URL: http://localhost:80/api
+
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 80:80
+    container_name: nginx
+
+  server:
+    image: blogs-backend-dev
+    build:
+      context: ./blogs-backend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./blogs-backend:/home/node
+      - node_modules_backend:/home/node/node_modules
+    container_name: blogs-backend-dev
+    environment:
+      MONGODB_URI: mongodb://admin:admin@mongo:27017/blogs
+      PORT: 4000
+      SECRET: blogsapp
+
+  mongo:
+    image: mongo:4.4.10-focal
+    volumes:
+      - ./blogs-backend/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - ./blogs-backend/mongo_data:/data/db
+    container_name: blogs-mongo-dev
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: blogs
+volumes:
+      node_modules_frontend:
+      node_modules_backend:

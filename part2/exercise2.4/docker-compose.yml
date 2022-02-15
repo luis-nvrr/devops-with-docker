@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+
+        frontend:
+           image: frontend
+           build:
+               context: ./frontend/
+               dockerfile: Dockerfile
+           container_name: frontend
+           ports:
+                   - 5000:5000
+        backend:
+           image: backend
+           build:
+               context: ./backend/
+               dockerfile: Dockerfile
+           container_name: backend
+           ports:
+                   - 8080:8080
+           environment:
+                   - REDIS_HOST=redis
+        redis:
+           image: redis
+           restart: unless-stopped
+           container_name: redis
+           command: ["redis-server", "--appendonly", "yes"]
+
